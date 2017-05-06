@@ -1,7 +1,9 @@
-import Vue from 'vue';
 import Router from 'vue-router';
-import hello from '@/routes/home';
+import Vue from 'vue';
+
 import champion from '@/routes/champion'
+import home from '@/routes/home';
+
 
 Vue.use(Router);
 
@@ -11,8 +13,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'hello',
-      component: hello
+      name: 'home',
+      component: home
 
     },
 
@@ -20,7 +22,7 @@ export default new Router({
       path: '/champion',
       name: 'champion',
       component: champion
-      
+
     }
 
   ]
