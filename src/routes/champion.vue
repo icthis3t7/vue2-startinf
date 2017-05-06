@@ -11,6 +11,10 @@
 
     </ul>
 
+    <p>
+      error: {{ error }}
+    </p>
+
   </div>
 
 </template>
@@ -18,8 +22,6 @@
 
 <script>
 import champion from '@/api/champion/champion';
-//import axios from 'axios';
-
 
 export default {
   name: 'champion',
@@ -27,7 +29,8 @@ export default {
   data () {
     return {
       msg: 'Welcome to the Champion component',
-      champs: {}
+      champs: {},
+      error: undefined
 
     }
 
@@ -37,11 +40,11 @@ export default {
     // get all champ data (done every time the vue is loaded)
     var _self = this;
 
-    champion.getAllChampionStaticData.then(function (champs) {
+    champion.getAllChampionStaticData().then(function (champs) {
       _self.champs = champs;
 
-    }).catch(function (error) {
-      _self.champs = error;
+    }, function (error) {
+      _self.error = error;
 
     });
 
