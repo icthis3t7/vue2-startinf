@@ -57,6 +57,8 @@ typings/
 # dotenv environment variables file
 .env
 
-
 # etc
 .DS_Store
+
+# app specific
+/src/_keys
