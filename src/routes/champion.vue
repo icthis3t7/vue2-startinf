@@ -9,9 +9,13 @@
 
     </div>
 
-    <input v-if="champs" v-model="message" placeholder="edit me">
+    <input v-model="filterName" placeholder="Champion Name" style="float: left;">
 
-    <div v-if="champs" v-for="champ in champs" style="float: left;">
+    <br />
+    <br />
+    <br />
+
+    <div v-if="champs" v-for="champ in filterByProperty(champs, 'name', filterName)" style="float: left;">
       <img :src="'http://ddragon.leagueoflegends.com/cdn/img/champion/loading/' + champ.key + '_0.jpg'" />
 
       <p>Name: {{ champ.name }} - {{ champ.title }}</p>
@@ -30,6 +34,7 @@
 <script>
 import champion from '@/api/champion/champion';
 
+
 export default {
   name: 'champion',
 
@@ -37,13 +42,14 @@ export default {
     return {
       msg: 'Welcome to the Champion component',
       champs: undefined,
-      error: undefined
+      error: undefined,
+      filterName: null
 
     }
 
   },
 
-  created() {
+  created () {
     // get all champ data (done every time the vue is loaded)
     var _self = this;
 
@@ -54,6 +60,37 @@ export default {
       _self.error = error;
 
     });
+
+  },
+
+  methods: {
+    filterByProperty: function (data, prop, value) {
+      if (value) {
+        let filtered = {};
+
+        for (var key in data) {
+          console.log('string to filter on: ' + data[key][prop]);
+          console.log('value filtering it : ' + value);
+
+          console.log(data[key][prop][0].toLowerCase() + ' \ ' + value[0].toLowerCase());
+          console.log(data[key][prop].toLowerCase().indexOf(value));
+
+
+          if (data[key] && data[key][prop] && data[key][prop][0].toLowerCase() === value[0].toLowerCase() && data[key][prop].toLowerCase().indexOf(value) > -1) {
+            filtered[key] = data[key];
+
+          }
+
+        }
+
+        return filtered;
+
+      } else {
+        return data;
+
+      }
+
+    }
 
   }
 
