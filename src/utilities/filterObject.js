@@ -8,7 +8,6 @@ export default {
       // perform the filter
       for (var key in objectToFilter) {
         let singleObjectItem = objectToFilter[key];
-        debugger;
 
         if (singleObjectItem && singleObjectItem[propertyToFilterOn] && singleObjectItem[propertyToFilterOn].toLowerCase().indexOf(filterValue) > -1) {
           filtered[key] = singleObjectItem;
