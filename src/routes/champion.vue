@@ -4,16 +4,23 @@
 
     <h2>Champions</h2>
 
-    <ul>
-      <li v-for="champ in champs">
-        {{ champ.id }} - {{ champ.title }}
-      </li>
+    <div v-if="!champs">
+      Loading...
 
-    </ul>
+    </div>
 
-    <p>
-      error: {{ error }}
-    </p>
+    <input v-if="champs" v-model="message" placeholder="edit me">
+
+    <div v-if="champs" v-for="champ in champs" style="float: left;">
+      <img :src="'http://ddragon.leagueoflegends.com/cdn/img/champion/loading/' + champ.key + '_0.jpg'" />
+
+      <p>Name: {{ champ.name }} - {{ champ.title }}</p>
+
+    </div>
+
+
+
+    <p :if="error">{{ error }}</p>
 
   </div>
 
@@ -29,7 +36,7 @@ export default {
   data () {
     return {
       msg: 'Welcome to the Champion component',
-      champs: {},
+      champs: undefined,
       error: undefined
 
     }
