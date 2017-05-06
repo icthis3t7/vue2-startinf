@@ -1,4 +1,6 @@
-//http://ddragon.leagueoflegends.com/cdn/6.24.1/data/en_US/champion.json
+//TODO: look into a different promise library (focus on performance)
+//TODO: consider a different ajax library (is one even needed?)
+
 import cache from '@/api/cache/cache';
 import axios from 'axios';
 
@@ -15,8 +17,10 @@ export default {
 
       } else {
         // get data from riot then cache
-        axios.get('http://ddragon.leagueoflegends.com/cdn/6.24.1/data/en_US/champion.json')
+        //TODO: remove key from client
+        axios.get('https://na1.api.riotgames.com/lol/static-data/v3/champions?champListData=info')
         .then(response => {
+          // ensure valid data
           if (response && response['data'] && response.data['data']) {
             cache.set('allChampions', response.data.data);
 
@@ -29,8 +33,7 @@ export default {
 
         })
         .catch(e => {
-          alert('fix this error in champion.js: ' + e);
-          reject(e);
+          reject(e.toString);
 
         });
 
