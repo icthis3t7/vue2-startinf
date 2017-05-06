@@ -1,6 +1,5 @@
 //TODO: look into a different promise library (focus on performance)
 //TODO: consider a different ajax library (is one even needed?)
-
 import axios from 'axios';
 
 import cache from '@/api/cache/cache';

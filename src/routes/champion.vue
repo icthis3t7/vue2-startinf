@@ -48,6 +48,7 @@ export default {
 
   },
 
+
   created () {
     // get all champ data (done every time the vue is loaded)
     let _self = this;
@@ -61,6 +62,7 @@ export default {
     });
 
   },
+  
 
   //TODO: see if we can just import the method....
   methods: {
