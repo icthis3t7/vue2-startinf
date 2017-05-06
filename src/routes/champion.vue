@@ -2,7 +2,14 @@
   <div class="hello">
     <h1>{{ msg }}</h1>
 
-    <h2>Ecosystem</h2>
+    <h2>Champions</h2>
+
+    <ul>
+      <li v-for="champ in champs">
+        {{ champ.id }} - {{ champ.title }}
+      </li>
+
+    </ul>
 
   </div>
 
@@ -10,18 +17,37 @@
 
 
 <script>
+import champion from '@/api/champion/champion';
+//import axios from 'axios';
+
+
 export default {
   name: 'champion',
 
   data () {
     return {
-      msg: 'Welcome to the Champion component'
+      msg: 'Welcome to the Champion component',
+      champs: {}
 
     }
 
+  },
+
+  created() {
+    // get all champ data (done every time the vue is loaded)
+    var _self = this;
+
+    champion.getAllChampionStaticData.then(function (champs) {
+      _self.champs = champs;
+
+    }).catch(function (error) {
+      _self.champs = error;
+
+    });
+
   }
 
-};
+}
 
 </script>
 
@@ -40,7 +66,6 @@ ul {
 }
 
 li {
-  display: inline-block;
   margin: 0 10px;
 
 }

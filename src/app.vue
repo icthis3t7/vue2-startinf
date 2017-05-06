@@ -10,7 +10,7 @@
 
 
 <script>
-import navi from '@/components/nav'
+import navi from '@/components/nav';
 
 export default {
   name: 'app',
