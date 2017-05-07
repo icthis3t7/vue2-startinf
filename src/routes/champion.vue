@@ -1,8 +1,16 @@
 <template>
-  <div v-if="champion" class="hello">
-    <img :src="'http://ddragon.leagueoflegends.com/cdn/img/champion/splash/' + champion.key + '_0.jpg'" />
-    <h3>{{ champion.name }}, {{ champion.title}}</h3>
-    <p>{{ champion.lore }}</p>
+  <div class="hello">
+    <div v-if="!champion">
+      Loading...
+
+    </div>
+
+    <div v-else>
+      <img :src="'http://ddragon.leagueoflegends.com/cdn/img/champion/splash/' + champion.key + '_0.jpg'" />
+      <h3>{{ champion.name }}, {{ champion.title}}</h3>
+      <p>{{ champion.lore }}</p>
+      
+    </div>
 
   </div>
 
