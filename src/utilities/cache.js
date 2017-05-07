@@ -40,7 +40,7 @@ export default {
 
   // delete cache item
   delete: function (key) {
-    delete localStorage[key];
+    localStorage.removeItem(key);
 
   },
 
