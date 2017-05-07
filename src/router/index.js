@@ -1,7 +1,8 @@
 import Router from 'vue-router';
 import Vue from 'vue';
 
-import champion from '@/routes/champion'
+import champion from '@/routes/champion';
+import missing from '@/routes/missing'
 import home from '@/routes/home';
 
 
@@ -19,9 +20,15 @@ export default new Router({
     },
 
     {
-      path: '/champion',
+      path: '/champion/:name',
       name: 'champion',
       component: champion
+
+    },
+
+    {
+      path: '*',
+      component: missing
 
     }
 
