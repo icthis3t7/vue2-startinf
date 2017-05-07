@@ -2,7 +2,7 @@
 //TODO: consider a different ajax library (is one even needed?)
 import axios from 'axios';
 
-import cache from '@/api/cache/cache';
+import cache from '@/utilities/cache';
 import keys from '@/_keys/keys.js';
 import sortObject from '@/utilities/sortObject';
 
