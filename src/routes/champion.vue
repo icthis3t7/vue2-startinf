@@ -1,5 +1,5 @@
 <template>
-  <div class="hello">
+  <div v-if="champion" class="hello">
     <img :src="'http://ddragon.leagueoflegends.com/cdn/img/champion/splash/' + champion.key + '_0.jpg'" />
     <h3>{{ champion.name }}, {{ champion.title}}</h3>
     <p>{{ champion.lore }}</p>
@@ -12,12 +12,11 @@
 <script>
 import champion from '@/api/champion/champion';
 
-export default {
-  name: 'champion',
 
+export default {
   data () {
     return {
-      champion: undefined
+      champion: null
 
     }
 
