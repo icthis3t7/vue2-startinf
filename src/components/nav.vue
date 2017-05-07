@@ -8,11 +8,6 @@
 
       </li>
 
-      <li>
-        <router-link v-bind:to="'/champion'">Champion</router-link>
-
-      </li>
-
     </ul>
 
   </nav>
