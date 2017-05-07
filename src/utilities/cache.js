@@ -2,7 +2,7 @@
 export default {
   // return a single cache item
   get: function (key) {
-    let cacheItem = localStorage[key];
+    let cacheItem = localStorage.getItem(key);
 
     if (cacheItem) {
       let cacheData = JSON.parse(cacheItem);
@@ -33,7 +33,7 @@ export default {
 
     };
 
-    localStorage[key] = JSON.stringify(cacheItem);
+    localStorage.setItem(key, JSON.stringify(cacheItem));
 
   },
 
