@@ -13,7 +13,7 @@
     <br />
     <br />
 
-    <div v-if="champs" v-for="champ in filterObjectByProperty(champs, 'name', filterName)" style="float: left;">
+    <div v-if="champs" v-for="champ in filteredChampions" style="float: left;">
       <router-link :to="{ name: 'champion', params: { name: champ.name } }">
         <img :src="'http://ddragon.leagueoflegends.com/cdn/img/champion/loading/' + champ.key + '_0.jpg'" />
 
@@ -36,8 +36,6 @@ import filterObject from '@/utilities/filterObject';
 
 
 export default {
-  name: 'champion',
-
   data () {
     return {
       champs: undefined,
@@ -64,9 +62,11 @@ export default {
   },
 
 
-  //TODO: see if we can just import the method....
-  methods: {
-    filterObjectByProperty: filterObject.byProperty
+  computed: {
+    filteredChampions: function () {
+      return filterObject.byProperty(this.champs, 'name', this.filterName);
+
+    }
 
   }
 
