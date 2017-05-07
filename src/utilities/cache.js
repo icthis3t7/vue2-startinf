@@ -55,7 +55,6 @@ export default {
       return true;
 
     } else {
-      alert('data was old, need to get new stuff');
       return false;
 
     }
