@@ -26,6 +26,11 @@ export default {
 
 
 <style>
+body {
+  background: url(./assets/images/bg.png) repeat;
+
+}
+
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
