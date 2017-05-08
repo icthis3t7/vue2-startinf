@@ -38,8 +38,8 @@ import filterObject from '@/utilities/filterObject';
 export default {
   data () {
     return {
-      champs: undefined,
-      error: undefined,
+      champs: null,
+      error: null,
       filterName: null
 
     }
@@ -47,17 +47,18 @@ export default {
   },
 
 
-  created () {
-    // get all champ data (done every time the vue is loaded)
-    let _self = this;
+  beforeRouteEnter (to, from, next) {
+    next(vm => {
+      champion.getAllChampionStaticData().then(champs => {
+        vm.champs = champs;
 
-    champion.getAllChampionStaticData().then(champs => {
-      _self.champs = champs;
+      }, error => {
+        vm.error = error;
 
-    }, error => {
-      _self.error = error;
+      });
 
     });
+
 
   },
 

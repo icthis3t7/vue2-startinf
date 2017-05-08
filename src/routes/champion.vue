@@ -9,8 +9,10 @@
       <img :src="'http://ddragon.leagueoflegends.com/cdn/img/champion/splash/' + champion.key + '_0.jpg'" />
       <h3>{{ champion.name }}, {{ champion.title}}</h3>
       <p>{{ champion.lore }}</p>
-      
+
     </div>
+
+    <p :if="error">{{ error }}</p>
 
   </div>
 
@@ -24,23 +26,27 @@ import champion from '@/api/champion/champion';
 export default {
   data () {
     return {
-      champion: null
+      champion: null,
+      error: null,
+      championService: champion
 
     }
 
   },
 
 
-  created () {
-    let _self = this;
+  beforeRouteEnter (to, from, next) {
+    next(vm => {
+      vm.championService.getChampion(to.params.name).then(champs => {
+        vm.champion = champs;
 
-    champion.getChampion(_self.$route.params.name).then(champs => {
-      _self.champion = champs;
+      }, error => {
+        vm.error = error;
 
-    }, error => {
-      _self.error = error;
+      });
 
     });
+
 
   }
 
