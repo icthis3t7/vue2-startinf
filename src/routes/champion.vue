@@ -28,6 +28,7 @@ export default {
     return {
       champion: null,
       error: null,
+      //TODO: research alternatives (i don't think this is the best way to do it)
       championService: champion
 
     }
