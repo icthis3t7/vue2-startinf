@@ -55,7 +55,7 @@ export default {
 
 
   // single champ
-  getChampion: function (uncleanChampionName) {
+  getChampion: function (name) {
     let _self = this;
 
     return new Promise((resolve, reject) => {
