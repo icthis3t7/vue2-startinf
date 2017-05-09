@@ -55,7 +55,7 @@ export default {
 
 
   // single champ
-  getChampion: function (name) {
+  getChampion: function (uncleanChampionName) {
     let _self = this;
 
     return new Promise((resolve, reject) => {
@@ -66,6 +66,7 @@ export default {
         resolve(championData);
 
       } else {
+        //TODO: map name to key, key to ID
         _self._getChampionId(name).then(id => {
           // get data from riot then cache
           //TODO: remove key from client
